@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahu Ji Kirana Store</title>
+    
+    <!-- Google Fonts for better Hindi/English Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Mukta', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#b45309', // Earthy Brown/Orange
+                        secondary: '#fef3c7', // Light yellow background
+                    },
+                    backgroundImage: {
+                        'pattern': "url('data:image/svg+xml,%3Csvg width=\\'20\\' height=\\'20\\' viewBox=\\'0 0 20 20\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'%23b45309\\' fill-opacity=\\'0.05\\' fill-rule=\\'evenodd\\'%3E%3Ccircle cx=\\'3\\' cy=\\'3\\' r=\\'3\\'/%3E%3Ccircle cx=\\'13\\' cy=\\'13\\' r=\\'3\\'/%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Smooth Fade In Animation */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-secondary text-gray-800 antialiased flex flex-col min-h-screen relative font-sans">
+
+    <!-- Background Pattern overlay -->
+    <div class="fixed inset-0 bg-pattern pointer-events-none z-0"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-primary/95 backdrop-blur-sm text-white shadow-lg sticky top-0 z-50 border-b border-orange-800/50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <i data-lucide="store" class="w-8 h-8 group-hover:scale-110 transition-transform duration-300"></i>
+                <h1 class="font-extrabold text-2xl tracking-wide">Sahu Ji Kirana</h1>
+            </div>
+            
+            <div class="flex items-center gap-5">
+                <!-- Language Toggles -->
+                <div class="flex bg-orange-900/40 rounded-lg p-1 shadow-inner border border-orange-800/50">
+                    <button onclick="setLanguage('en')" id="btn-en" class="px-4 py-1.5 rounded-md text-sm font-bold bg-white text-primary shadow-sm transition-all duration-300">English</button>
+                    <button onclick="setLanguage('hi')" id="btn-hi" class="px-4 py-1.5 rounded-md text-sm font-bold text-white/90 hover:text-white transition-all duration-300">हिंदी</button>
+                </div>
+                
+                <a href="#contact" data-lang-en="Contact Us" data-lang-hi="संपर्क करें" class="hidden sm:inline-block bg-white text-primary px-5 py-2 rounded-full font-bold text-sm hover:bg-orange-50 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-4xl mx-auto px-4 py-16 mt-4 text-center relative z-10 fade-in-up">
+        <span class="inline-block py-1.5 px-4 rounded-full bg-orange-100 text-primary text-sm font-bold mb-6 border border-orange-200 shadow-sm">
+            <span data-lang-en="Welcome to" data-lang-hi="में आपका स्वागत है">Welcome to</span> Sahu Ji Kirana
+        </span>
+        <h2 data-lang-en="Your Local Village Store" data-lang-hi="आपका अपना किराना स्टोर" class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 drop-shadow-sm">
+            Your Local Village Store
+        </h2>
+        <p data-lang-en="Everything you need for your home, at the best prices! Fresh grains, oil, spices, and all daily essentials available here." data-lang-hi="घर का सारा सामान, सबसे बढ़िया दाम पर! ताज़ा अनाज, तेल, मसाले और रोज़मर्रा की ज़रूरत का सब कुछ यहाँ मिलता है।" class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Everything you need for your home, at the best prices! Fresh grains, oil, spices, and all daily essentials available here.
+        </p>
+        
+        <div class="bg-white/80 backdrop-blur-sm border border-yellow-300 rounded-2xl p-5 inline-block text-left mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center gap-3">
+                <div class="bg-yellow-100 p-2 rounded-full text-yellow-600">
+                    <i data-lucide="clock" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-900 text-sm uppercase tracking-wider" data-lang-en="Opening Hours" data-lang-hi="खुलने का समय">Opening Hours</p>
+                    <p data-lang-en="7:00 AM to 9:00 PM (Everyday)" data-lang-hi="सुबह 7:00 बजे से रात 9:00 बजे तक (रोज़ाना)" class="text-primary font-bold text-lg">
+                        7:00 AM to 9:00 PM (Everyday)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE SELL SECTION -->
+    <section class="bg-white/90 backdrop-blur-md py-16 border-t border-b border-orange-900/10 relative z-10 fade-in-up delay-100 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 data-lang-en="What We Sell" data-lang-hi="हमारे यहाँ क्या मिलता है?" class="text-3xl font-extrabold text-gray-900 inline-block relative">
+                    What We Sell
+                    <div class="absolute -bottom-3 left-1/4 right-1/4 h-1.5 bg-primary rounded-full opacity-80"></div>
+                </h3>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-lg">
+                <!-- Item 1 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="wheat" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Flour, Rice, Lentils & Grains" data-lang-hi="आटा, चावल, दाल और अनाज" class="font-semibold text-gray-800">Flour, Rice, Lentils & Grains</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="droplet" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Mustard Oil, Refined Oil & Ghee" data-lang-hi="सरसों तेल, रिफाइंड और घी" class="font-semibold text-gray-800">Mustard Oil, Refined Oil & Ghee</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="flame" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Whole Spices & Ground Spices" data-lang-hi="खड़े मसाले और पिसे मसाले" class="font-semibold text-gray-800">Whole Spices & Ground Spices</span>
+                </div>
+                <!-- Item 4 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="coffee" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Tea Leaves, Sugar & Salt" data-lang-hi="चाय पत्ती, चीनी और नमक" class="font-semibold text-gray-800">Tea Leaves, Sugar & Salt</span>
+                </div>
+                <!-- Item 5 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="package" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Soap, Detergent & Bathing Items" data-lang-hi="साबुन, सर्फ और नहाने का सामान" class="font-semibold text-gray-800">Soap, Detergent & Bathing Items</span>
+                </div>
+                <!-- Item 6 -->
+                <div class="group flex flex-col items-center text-center gap-4 p-6 bg-orange-50/50 hover:bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                    <div class="bg-white p-4 rounded-full shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white text-primary transition-all duration-300">
+                        <i data-lucide="cookie" class="w-8 h-8"></i>
+                    </div>
+                    <span data-lang-en="Biscuits, Namkeen & Kids Snacks" data-lang-hi="बिस्कुट, नमकीन और बच्चों की चीज़ें" class="font-semibold text-gray-800">Biscuits, Namkeen & Kids Snacks</span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <p data-lang-en="...and much more! Visit our shop to see." data-lang-hi="...और भी बहुत कुछ! दुकान आकर देखें।" class="inline-block bg-secondary px-6 py-2 rounded-full text-primary font-medium text-sm border border-primary/20 shadow-sm">
+                    ...and much more! Visit our shop to see.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / LOCATION -->
+    <section id="contact" class="bg-gray-900 text-white py-16 mt-auto relative z-10 fade-in-up delay-200">
+        <!-- Decorative subtle top border -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-900 via-primary to-gray-900"></div>
+
+        <div class="max-w-5xl mx-auto px-4">
+            <h3 data-lang-en="Visit Us Today" data-lang-hi="आज ही पधारें" class="text-3xl font-extrabold mb-12 text-center text-white tracking-wide">
+                Visit Us Today
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Location Card -->
+                <div class="bg-gray-800/80 backdrop-blur border border-gray-700 rounded-3xl p-8 flex flex-col items-center text-center hover:bg-gray-800 transition-colors shadow-xl">
+                    <div class="bg-gray-700/50 p-4 rounded-full mb-5 text-yellow-500">
+                        <i data-lucide="map-pin" class="w-10 h-10"></i>
+                    </div>
+                    <h4 data-lang-en="Store Location" data-lang-hi="दुकान का पता" class="text-gray-400 font-semibold mb-2 uppercase tracking-wider text-sm">Store Location</h4>
+                    <p data-lang-en="Sahu Ji Kirana Store," data-lang-hi="साहू जी किराना स्टोर," class="text-xl font-bold mb-1">Sahu Ji Kirana Store,</p>
+                    <p data-lang-en="Near Main Square" data-lang-hi="मुख्य चौराहे के पास" class="text-gray-300 mb-6">Near Main Square</p>
+                    
+                    <!-- Google Maps Button -->
+                    <a href="https://maps.app.goo.gl/Adk8PvZ4jsZxTNaJ7?g_st=ac" target="_blank" rel="noopener noreferrer" class="mt-auto bg-primary hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-orange-900/50 hover:scale-105 active:scale-95">
+                        <i data-lucide="map" class="w-5 h-5"></i>
+                        <span data-lang-en="View on Google Maps" data-lang-hi="गूगल मैप्स पर देखें">View on Google Maps</span>
+                    </a>
+                </div>
+                
+                <!-- Phone Card -->
+                <div class="bg-gray-800/80 backdrop-blur border border-gray-700 rounded-3xl p-8 flex flex-col items-center text-center hover:bg-gray-800 transition-colors shadow-xl">
+                    <div class="bg-gray-700/50 p-4 rounded-full mb-5 text-yellow-500">
+                        <i data-lucide="phone" class="w-10 h-10"></i>
+                    </div>
+                    <h4 data-lang-en="Call Us" data-lang-hi="हमें कॉल करें" class="text-gray-400 font-semibold mb-2 uppercase tracking-wider text-sm">Call Us</h4>
+                    <p data-lang-en="For orders or inquiries" data-lang-hi="सामान की जानकारी के लिए" class="text-gray-300 mb-4">For orders or inquiries</p>
+                    
+                    <!-- Phone Number Updated -->
+                    <p class="font-extrabold tracking-widest text-3xl text-yellow-400 mb-6 mt-auto">
+                        ---
+                    </p>
+
+                    <a href="tel:---" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95">
+                        <i data-lucide="phone-call" class="w-5 h-5"></i>
+                        <span data-lang-en="Call Now" data-lang-hi="अभी कॉल करें">Call Now</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 py-8 text-center text-sm relative z-10">
+        <div class="flex justify-center items-center gap-2 mb-4">
+            <i data-lucide="store" class="w-5 h-5 text-primary"></i>
+            <span class="font-bold text-white text-lg">Sahu Ji Kirana</span>
+        </div>
+        <p data-lang-en="&copy; 2026 Sahu Ji Kirana Store. All rights reserved." data-lang-hi="&copy; 2026 साहू जी किराना स्टोर। आपका स्वागत है।">
+            &copy; 2026 Sahu Ji Kirana Store. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR LANGUAGE TOGGLE -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Language Translation Logic
+        function setLanguage(lang) {
+            // Update all elements with data-lang attributes
+            const elements = document.querySelectorAll('[data-lang-en]');
+            
+            elements.forEach(el => {
+                // Add a quick fade out/in effect for text change
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    if (lang === 'en') {
+                        el.textContent = el.getAttribute('data-lang-en');
+                    } else if (lang === 'hi') {
+                        el.textContent = el.getAttribute('data-lang-hi');
+                    }
+                    el.style.opacity = '1';
+                    el.style.transition = 'opacity 0.3s ease';
+                }, 150);
+            });
+
+            // Update button styles
+            const btnEn = document.getElementById('btn-en');
+            const btnHi = document.getElementById('btn-hi');
+
+            if (lang === 'en') {
+                btnEn.className = 'px-4 py-1.5 rounded-md text-sm font-bold bg-white text-primary shadow-sm transition-all duration-300';
+                btnHi.className = 'px-4 py-1.5 rounded-md text-sm font-bold text-white/90 hover:text-white transition-all duration-300';
+            } else {
+                btnHi.className = 'px-4 py-1.5 rounded-md text-sm font-bold bg-white text-primary shadow-sm transition-all duration-300';
+                btnEn.className = 'px-4 py-1.5 rounded-md text-sm font-bold text-white/90 hover:text-white transition-all duration-300';
+            }
+        }
+    </script>
+</body>
+</html>
